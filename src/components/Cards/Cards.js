@@ -9,14 +9,14 @@ import {
 } from "reactstrap";
 import "./Cards.css";
 
-const Cards = ({ Saldo, Cliente, Cuenta, img }) => {
+const Cards = ({ saldo, cliente, cuenta, img }) => {
   const [counter, setCounter] = useState(1);
 
-  const CounterUp = () => {
+  const counterUp = () => {
     setCounter(counter + 1);
   };
 
-  const CounterDown = () => {
+  const counterDown = () => {
     if (counter > 0) {
       setCounter(counter - 1);
     }
@@ -26,17 +26,17 @@ const Cards = ({ Saldo, Cliente, Cuenta, img }) => {
     <div className="container">
       <Card>
         <CardBody>
-          <CardTitle tag="h5">Deuda {Cliente}</CardTitle>
+          <CardTitle tag="h5">Deuda {cliente}</CardTitle>
           <img src={img} alt="Deuda" />
           <CardSubtitle className="mb-2 text-muted" tag="h6">
-            Numero de Cuenta {Cuenta}
+            Numero de Cuenta {cuenta}
           </CardSubtitle>
           <CardText>
-            Pago por deuda Cuenta {Cuenta}, Saldo actualizado {Saldo}. Cliente:{" "}
-            {Cliente}. Cuotas a pagar:
+            Pago por deuda Cuenta {cuenta}, Saldo actualizado {saldo}. Cliente:{" "}
+            {cliente}. Cuotas a pagar:
             <CardText>
-              <Button onClick={CounterUp}>Agrega</Button>
-              <Button onClick={CounterDown}>Elimina</Button>
+              <Button onClick={counterUp}>Agrega</Button>
+              <Button onClick={counterDown}>Elimina</Button>
               <p>Seleccionaste {counter} cuotas para pagar</p>
             </CardText>
           </CardText>

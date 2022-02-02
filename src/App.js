@@ -23,8 +23,9 @@ const App = () => {
       <NavBar />
       <Header title="Sinergia CC" />
       <ItemListContainer greeting="Bienvenido Gonzalo!" />
+
       <div className="ListadoDeudas">
-        <Cards
+        {/*         <Cards
           img="../assests/img/cenco.png"
           cliente="Cencosud"
           saldo="$8500"
@@ -35,7 +36,7 @@ const App = () => {
           cliente="Tarjeta Naranja"
           saldo="$17200"
           cuenta="PS005488"
-        />
+        /> */}
         <div>
           <ItemCount stock={5} />
         </div>

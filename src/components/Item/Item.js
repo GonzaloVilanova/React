@@ -3,8 +3,8 @@ import React from "react";
 const Item = ({ cliente }) => {
   return (
     <div>
-      <p>{cliente.id}</p>
-      <p>{cliente.nombre}</p>
+      <p>Id: {cliente.id}</p>
+      <p>Nombre: {cliente.name}</p>
     </div>
   );
 };

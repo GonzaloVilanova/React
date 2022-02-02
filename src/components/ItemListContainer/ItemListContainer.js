@@ -3,12 +3,13 @@ import ItemList from "../ItemList/ItemList.js";
 import "./ItemListContainer.css";
 
 const ItemListContainer = ({ greeting }) => {
-  const [clientes, setUsers] = useState([]);
+  const [clientes, setClientes] = useState([]);
 
   useEffect(() => {
-    fetch("https://cd68d732-812d-4c3e-9c4b-18cbd9d8fb18.mock.pstmn.io/clientes")
+    fetch("https://jsonplaceholder.typicode.com/users")
       .then((res) => res.json())
-      .then((json) => setUsers(json))
+      .then((json) => setClientes(json))
+
       .catch((error) => {
         console.log(error);
       });

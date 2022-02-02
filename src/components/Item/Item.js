@@ -1,10 +1,25 @@
 import React from "react";
+import {
+  Card,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  CardText,
+  Button,
+} from "reactstrap";
+
+import "./item.css";
 
 const Item = ({ cliente }) => {
   return (
-    <div>
-      <p>Id: {cliente.id}</p>
-      <p>Nombre: {cliente.name}</p>
+    <div className="item-wrap">
+      <Card>
+        <CardBody>
+          <CardTitle tag="h5">Deuda: {cliente.company.name}</CardTitle>
+          <CardText>DEUDOR: {cliente.name}</CardText>
+          Email NOTIFICADO: {cliente.email}
+        </CardBody>
+      </Card>
     </div>
   );
 };

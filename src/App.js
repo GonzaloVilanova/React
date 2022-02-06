@@ -1,47 +1,42 @@
 import "./App.css";
 import React from "react";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText,
-  Button,
-} from "reactstrap";
+
+// REACT ROUTER DOM
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 //Componentes
 import Header from "./components/Header/Header";
 import NavBar from "./components/NavBar/NavBar";
-import Cards from "./components/Cards/Cards";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemCount from "./components/ItemCount/ItemCount";
+
+//Views
+import Home from "./views/Home/Home";
+import Services from "./views/Services/Services";
+import Contact from "./views/Contact/Contact";
+import Payments from "./views/Payments/Payments";
+import ItemDetail from "./views/Detail/ItemDetail";
 
 // Main APP
 const App = () => {
   return (
-    <div className="App">
-      <NavBar />
-      <Header title="Sinergia CC" />
-      <ItemListContainer greeting="Bienvenido Gonzalo!" />
+    <Router>
+      <div className="App">
+        <NavBar />
+        <Header title="Centro de Gestion de Deudas" />
 
-      <div className="ListadoDeudas">
-        {/*         <Cards
-          img="../assests/img/cenco.png"
-          cliente="Cencosud"
-          saldo="$8500"
-          cuenta="PS003333"
-        />
-        <Cards
-          img="../assests/img/naranja.png"
-          cliente="Tarjeta Naranja"
-          saldo="$17200"
-          cuenta="PS005488"
-        /> */}
-        <div>
+        <div className="ListadoDeudas">
           <ItemCount stock={5} />
         </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Services" element={<Services />} />
+          <Route path="/Payments" element={<Payments />} />
+          <Route path="/Contact" element={<Contact />} />
+          <Route path="/detail/:id" element={<ItemDetail />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 };
 

@@ -9,6 +9,8 @@ import {
   Button,
 } from "reactstrap";
 
+import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer";
+
 import "./item.css";
 
 // REACT ROUTER DOM

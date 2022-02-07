@@ -4,21 +4,26 @@ import axios from "axios";
 
 // REACT ROUTER DOM
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const ItemDetailContainer = ({ greeting }) => {
-  const [clientes, setClientes] = useState([]);
+const ItemDetailContainer = () => {
+  const [deudor, setCliente] = useState([]);
+
+  let id = useParams();
+  let idDeudor = id.id;
 
   useEffect(() => {
-    axios(`${process.env.REACT_APP_MOCKVILANOVA_BASEURL}`).then((res) =>
-      setClientes(res.data)
+    axios(`${process.env.REACT_APP_MOCKVILANOVA_BASEURL}?id=${idDeudor}`).then(
+      (res) => setCliente(res.data)
     );
-  }, []);
+  }, [idDeudor]);
+  console.log(deudor);
 
   return (
     <div>
-      <Link to={`/detail/${data.id}`}>
-        <ItemDetail></ItemDetail>
-      </Link>
+      {deudor.map((deudor) => (
+        <ItemDetail key={deudor.id} deudor={deudor}></ItemDetail>
+      ))}
     </div>
   );
 };

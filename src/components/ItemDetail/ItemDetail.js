@@ -15,6 +15,7 @@ const ItemDetail = ({ deudor }) => {
     <div className="item-wrap">
       <Card>
         <CardBody>
+          <CardImg alt="Card image cap" src={deudor.img2} top width="100%" />
           <CardTitle tag="h5">DETALLE Deuda:</CardTitle>
 
           <CardText>DEUDOR: {deudor.nombre}</CardText>

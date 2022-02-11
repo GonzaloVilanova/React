@@ -1,0 +1,8 @@
+.item-wrap {
+  display: flex;
+  width: 30%;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  justify-content: space-around;
+  padding: 2rem;
+}

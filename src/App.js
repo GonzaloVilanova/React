@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
-import ItemCount from "./components/ItemCount/ItemCount";
 
 //Views
 import Home from "./views/Home/Home";
@@ -27,9 +26,6 @@ const App = () => {
         <NavBar />
         <Header title="Centro de Gestion de Deudas" />
 
-        <div className="ListadoDeudas">
-          <ItemCount stock={5} />
-        </div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Services" element={<Services />} />

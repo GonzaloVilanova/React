@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText,
-  Button,
-} from "reactstrap";
+import { Card, Button } from "reactstrap";
 
 const ItemCount = ({ stock, initial }) => {
   const [counter, setCounter] = useState(1);
@@ -27,8 +20,12 @@ const ItemCount = ({ stock, initial }) => {
     <div className="container">
       <Card>
         <p>Cantidad Seleccionada: {counter}</p>
-        <Button onClick={counterUp}>Agrega</Button>
-        <Button onClick={counterDown}>Elimina</Button>
+        <Button color="success" onClick={counterUp}>
+          Agrega
+        </Button>
+        <Button color="danger" onClick={counterDown}>
+          Elimina
+        </Button>
       </Card>
     </div>
   );

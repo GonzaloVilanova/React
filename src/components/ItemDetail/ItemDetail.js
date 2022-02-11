@@ -1,4 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+
+import "./ItemDetail.css";
+
+//COMPONENTS
+import ItemCount from "../ItemCount/ItemCount";
 
 import {
   Card,
@@ -11,6 +16,12 @@ import {
 } from "reactstrap";
 
 const ItemDetail = ({ deudor }) => {
+  const [addtocart, setAddtocart] = useState([]); // Array vacio para agregar al carrito
+
+  const onAdd = () => {
+    console.log("Agrega Item a Carrito");
+  };
+
   return (
     <div className="item-wrap">
       <Card>
@@ -25,6 +36,15 @@ const ItemDetail = ({ deudor }) => {
           <CardText>Saldo: {deudor.cuenta}</CardText>
           <CardText>
             DETALLE COMPLETO DE SU DEUDA...AÑO TAL... PRODUCTO TAL...
+          </CardText>
+          <CardText>Cuotas Pendientes: {deudor.cuotas}</CardText>
+          <CardText>
+            <ItemCount stock={deudor.cuotas} />
+          </CardText>
+          <CardText>
+            <Button color="primary" onClick={onAdd}>
+              Agregar al Carrito
+            </Button>
           </CardText>
         </CardBody>
       </Card>

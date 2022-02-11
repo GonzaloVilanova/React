@@ -17,7 +17,6 @@ const ItemDetailContainer = () => {
       (res) => setCliente(res.data)
     );
   }, [idDeudor]);
-  console.log(deudor);
 
   return (
     <div>

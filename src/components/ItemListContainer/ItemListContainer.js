@@ -15,6 +15,7 @@ const ItemListContainer = ({ greeting }) => {
       .catch((error) => {
         console.log(error);
       });
+    //.catch(setClientes([])); si falla, para que tome el array hardcodeado desde json
     setTimeout(() => {
       setIsLoading(false);
     }, 2000);

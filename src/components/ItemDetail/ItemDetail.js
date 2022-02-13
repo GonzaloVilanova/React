@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-
+import React, { useState, useContext } from "react";
 import "./ItemDetail.css";
+
+//CONTEXT
+import { CartContext } from "../../context/CartContext";
 
 //COMPONENTS
 import ItemCount from "../ItemCount/ItemCount";
@@ -16,10 +18,13 @@ import {
 } from "reactstrap";
 
 const ItemDetail = ({ deudor }) => {
-  const [addtocart, setAddtocart] = useState([]); // Array vacio para agregar al carrito
+  const [addToCart, setAddtocart] = useState([]); // Array vacio para agregar al carrito
 
-  const onAdd = () => {
-    console.log("Agrega Item a Carrito");
+  console.log(addToCart);
+  //const [data] = useContext(CartContext);
+
+  const agregaCarrito = () => {
+    setAddtocart();
   };
 
   return (
@@ -33,19 +38,20 @@ const ItemDetail = ({ deudor }) => {
           <CardSubtitle>
             Empresa: {deudor.empresa}(Cuenta {deudor.cuenta})
           </CardSubtitle>
-          <CardText>Saldo: {deudor.cuenta}</CardText>
+          <CardText>Saldo: ${deudor.saldo}</CardText>
           <CardText>
             DETALLE COMPLETO DE SU DEUDA...AÑO TAL... PRODUCTO TAL...
           </CardText>
           <CardText>Cuotas Pendientes: {deudor.cuotas}</CardText>
           <CardText>
-            <ItemCount stock={deudor.cuotas} />
+            <ItemCount
+              stock={deudor.cuotas}
+              id={deudor.id}
+              saldo={deudor.saldo}
+              setAddtocart={setAddtocart}
+            />
           </CardText>
-          <CardText>
-            <Button color="primary" onClick={onAdd}>
-              Agregar al Carrito
-            </Button>
-          </CardText>
+          {/* <Button color="primary">Agregar al Carrito</Button> */}
         </CardBody>
       </Card>
     </div>

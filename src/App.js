@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import { CartProvider } from "./context/CartContext";
 
 //Views
 import Home from "./views/Home/Home";
@@ -21,20 +22,22 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 // Main APP
 const App = () => {
   return (
-    <Router>
-      <div className="App">
-        <NavBar />
-        <Header title="Centro de Gestion de Deudas" />
+    <CartProvider>
+      <Router>
+        <div className="App">
+          <NavBar />
+          <Header title="Centro de Gestion de Deudas" />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Services" element={<Services />} />
-          <Route path="/Payments" element={<Payments />} />
-          <Route path="/Contact" element={<Contact />} />
-          <Route path="/detail/:id" element={<ItemDetailContainer />} />
-        </Routes>
-      </div>
-    </Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Services" element={<Services />} />
+            <Route path="/Payments" element={<Payments />} />
+            <Route path="/Contact" element={<Contact />} />
+            <Route path="/detail/:id" element={<ItemDetailContainer />} />
+          </Routes>
+        </div>
+      </Router>
+    </CartProvider>
   );
 };
 

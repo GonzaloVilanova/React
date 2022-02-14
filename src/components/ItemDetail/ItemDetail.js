@@ -7,6 +7,8 @@ import { CartContext } from "../../context/CartContext";
 //COMPONENTS
 import ItemCount from "../ItemCount/ItemCount";
 
+// PROPS DRILLING
+
 import {
   Card,
   CardBody,
@@ -14,11 +16,10 @@ import {
   CardImg,
   CardSubtitle,
   CardText,
-  Button,
 } from "reactstrap";
 
 const ItemDetail = ({ deudor }) => {
-  const [addToCart, setAddtocart] = useState([]); // Array vacio para agregar al carrito
+  /*   const [addToCart, setAddtocart] = useState([]); // Array vacio para agregar al carrito
 
   console.log(addToCart);
   //const [data] = useContext(CartContext);
@@ -26,6 +27,10 @@ const ItemDetail = ({ deudor }) => {
   const agregaCarrito = () => {
     setAddtocart();
   };
+
+  const onAdd = () => {
+    // AGREGAR A CARRITO
+  }; */
 
   return (
     <div className="item-wrap">
@@ -45,10 +50,10 @@ const ItemDetail = ({ deudor }) => {
           <CardText>Cuotas Pendientes: {deudor.cuotas}</CardText>
           <CardText>
             <ItemCount
+              data={deudor}
               stock={deudor.cuotas}
               id={deudor.id}
               saldo={deudor.saldo}
-              setAddtocart={setAddtocart}
             />
           </CardText>
           {/* <Button color="primary">Agregar al Carrito</Button> */}

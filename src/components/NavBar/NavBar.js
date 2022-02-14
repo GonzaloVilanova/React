@@ -9,7 +9,12 @@ const NavBar = () => {
   return (
     <div>
       <Nav className="NavBar">
-        <img className="Logo" src={logo} alt="logo-Sinergia" />
+        <NavItem>
+          <Link to="/">
+            {" "}
+            <img className="Logo" src={logo} alt="logo-Sinergia" />
+          </Link>
+        </NavItem>
         <NavItem>
           <Link to="/">Home</Link>
         </NavItem>

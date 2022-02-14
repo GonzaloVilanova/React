@@ -3,8 +3,10 @@ import { Card, Button, CardText } from "reactstrap";
 
 //COMPONENTS
 
-const ItemCount = ({ stock, initial, id, saldo, addToCart }) => {
+const ItemCount = ({ stock, initial, id, saldo, deudor }) => {
   const [counter, setCounter] = useState(1);
+
+  const [addToCart, setAddtocart] = useState([]); // Array vacio para agregar al carrito
 
   const counterUp = () => {
     if (counter < stock) {
@@ -18,10 +20,11 @@ const ItemCount = ({ stock, initial, id, saldo, addToCart }) => {
     }
   };
 
-  const onAdd = (idDeuda, cantSelecc) => {
-    const foundItem = "";
-    console.log(id); // Envia la cantidad al carrito -- A CONTEXT ??
-    //setAddtocart();
+  const Agrega = () => {
+    console.log("first");
+    setAddtocart(deudor);
+    console.log(counter);
+    console.log(addToCart);
   };
 
   return (
@@ -36,7 +39,7 @@ const ItemCount = ({ stock, initial, id, saldo, addToCart }) => {
           Elimina
         </Button>
         <CardText>
-          <Button color="primary" onClick={onAdd}>
+          <Button color="primary" onClick={Agrega}>
             Agregar al Carrito
           </Button>
         </CardText>

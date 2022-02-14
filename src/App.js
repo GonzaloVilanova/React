@@ -18,6 +18,7 @@ import Payments from "./views/Payments/Payments";
 import ItemDetail from "./views/Detail/ItemDetail";
 import Detail from "./views/Detail/Detail";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+import Cart from "./views/Cart/Cart";
 
 // Main APP
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
             <Route path="/Services" element={<Services />} />
             <Route path="/Payments" element={<Payments />} />
             <Route path="/Contact" element={<Contact />} />
+            <Route path="/Cart" element={<Cart />} />
             <Route path="/detail/:id" element={<ItemDetailContainer />} />
           </Routes>
         </div>

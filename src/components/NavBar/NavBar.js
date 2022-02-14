@@ -28,7 +28,9 @@ const NavBar = () => {
           <Link to="/Contact">Contacto</Link>
         </NavItem>
         <NavItem>
-          <CardWidget />
+          <Link to="/Cart">
+            <CardWidget />
+          </Link>
         </NavItem>
       </Nav>
     </div>

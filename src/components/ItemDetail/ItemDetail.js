@@ -19,18 +19,14 @@ import {
 } from "reactstrap";
 
 const ItemDetail = ({ deudor }) => {
-  /*   const [addToCart, setAddtocart] = useState([]); // Array vacio para agregar al carrito
+  const [addToCart, setAddtocart] = useState(false); // Array vacio para agregar al carrito
 
   console.log(addToCart);
   //const [data] = useContext(CartContext);
 
-  const agregaCarrito = () => {
-    setAddtocart();
-  };
-
   const onAdd = () => {
-    // AGREGAR A CARRITO
-  }; */
+    setAddtocart(true);
+  };
 
   return (
     <div className="item-wrap">
@@ -38,7 +34,6 @@ const ItemDetail = ({ deudor }) => {
         <CardBody>
           <CardImg alt="Card image cap" src={deudor.img2} top width="100%" />
           <CardTitle tag="h5">DETALLE Deuda:</CardTitle>
-
           <CardText>DEUDOR: {deudor.nombre}</CardText>
           <CardSubtitle>
             Empresa: {deudor.empresa}(Cuenta {deudor.cuenta})
@@ -48,15 +43,17 @@ const ItemDetail = ({ deudor }) => {
             DETALLE COMPLETO DE SU DEUDA...AÑO TAL... PRODUCTO TAL...
           </CardText>
           <CardText>Cuotas Pendientes: {deudor.cuotas}</CardText>
+
           <CardText>
             <ItemCount
               data={deudor}
               stock={deudor.cuotas}
               id={deudor.id}
               saldo={deudor.saldo}
+              onAdd={onAdd}
+              addToCart={addToCart}
             />
           </CardText>
-          {/* <Button color="primary">Agregar al Carrito</Button> */}
         </CardBody>
       </Card>
     </div>

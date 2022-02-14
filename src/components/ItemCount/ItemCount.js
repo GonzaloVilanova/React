@@ -23,27 +23,20 @@ const ItemCount = ({ stock, initial, id, saldo, onAdd, addToCart }) => {
       <Card>
         <CardText>Cantidad Seleccionada: {counter}</CardText>
 
-        {addToCart == false ? (
-          <>
-            <CardText>
-              <Button color="success" onClick={counterUp}>
-                Agrega
-              </Button>
-              <Button color="danger" onClick={counterDown}>
-                Elimina
-              </Button>
-            </CardText>
-            <Button color="primary" onClick={onAdd}>
-              Agregar al Carrito
+        <>
+          <CardText>
+            <Button color="success" onClick={counterUp}>
+              Agrega
             </Button>
-          </>
-        ) : (
-          <NavItem>
-            <Link to="/Cart">
-              <Button color="primary">Finalizar Compra</Button>
-            </Link>
-          </NavItem>
-        )}
+            <Button color="danger" onClick={counterDown}>
+              Elimina
+            </Button>
+          </CardText>
+          <Button color="primary" onClick={onAdd}>
+            Agregar al Carrito
+          </Button>
+        </>
+
         <CardText></CardText>
       </Card>
     </div>

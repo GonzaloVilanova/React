@@ -1,5 +1,7 @@
 import React, { useState, useContext } from "react";
 import "./ItemDetail.css";
+import { NavItem } from "reactstrap";
+import { Link } from "react-router-dom";
 
 //CONTEXT
 import { CartContext } from "../../context/CartContext";
@@ -16,6 +18,7 @@ import {
   CardImg,
   CardSubtitle,
   CardText,
+  Button,
 } from "reactstrap";
 
 const ItemDetail = ({ deudor }) => {
@@ -45,14 +48,22 @@ const ItemDetail = ({ deudor }) => {
           <CardText>Cuotas Pendientes: {deudor.cuotas}</CardText>
 
           <CardText>
-            <ItemCount
-              data={deudor}
-              stock={deudor.cuotas}
-              id={deudor.id}
-              saldo={deudor.saldo}
-              onAdd={onAdd}
-              addToCart={addToCart}
-            />
+            {addToCart == false ? (
+              <ItemCount
+                data={deudor}
+                stock={deudor.cuotas}
+                id={deudor.id}
+                saldo={deudor.saldo}
+                onAdd={onAdd}
+                addToCart={addToCart}
+              />
+            ) : (
+              <NavItem>
+                <Link to="/Cart">
+                  <Button color="primary">Finalizar Compra</Button>
+                </Link>
+              </NavItem>
+            )}
           </CardText>
         </CardBody>
       </Card>

@@ -24,13 +24,19 @@ import {
 const ItemDetail = ({ deudor }) => {
   const [addToCart, setAddtocart] = useState(false); // Array vacio para agregar al carrito
 
-  /*   const [cart, setCart] = useContext(CartContext);
-  console.log(cart); */
+  const { cart, setCart } = useContext(CartContext);
 
-  const onAdd = (id, cantidad) => {
+  //const { foo } = useContext(CartContext);
+  const { addCuota } = useContext(CartContext);
+
+  const onAdd = (id, cantidad, saldo) => {
     setAddtocart(true);
-    console.log("Deuda: " + id);
+    console.log("Deuda ID: " + id);
     console.log("Cant Marcada: " + cantidad);
+
+    console.log("SaldoCuota: " + saldo);
+
+    addCuota(id, saldo, cantidad);
   };
 
   return (
@@ -48,7 +54,9 @@ const ItemDetail = ({ deudor }) => {
             DETALLE COMPLETO DE SU DEUDA...AÑO TAL... PRODUCTO TAL...
           </CardText>
           <CardText>Cuotas Pendientes: {deudor.cuotas}</CardText>
-
+          {/*           <Button color="primary" onClick={() => foo()}>
+            SSSS
+          </Button> */}
           <CardText>
             {addToCart == false ? (
               <ItemCount

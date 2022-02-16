@@ -3,7 +3,7 @@ import { Card, Button, CardText } from "reactstrap";
 import { NavItem } from "reactstrap";
 import { Link } from "react-router-dom";
 
-const ItemCount = ({ stock, initial, id, saldo, onAdd, addToCart }) => {
+const ItemCount = ({ stock, initial, id, saldo, onAdd, data }) => {
   const [counter, setCounter] = useState(1);
 
   const counterUp = () => {
@@ -32,7 +32,7 @@ const ItemCount = ({ stock, initial, id, saldo, onAdd, addToCart }) => {
               Elimina
             </Button>
           </CardText>
-          <Button color="primary" onClick={() => onAdd(id, counter)}>
+          <Button color="primary" onClick={() => onAdd(id, counter, saldo)}>
             Agregar al Carrito
           </Button>
         </>

@@ -32,7 +32,7 @@ const ItemCount = ({ stock, initial, id, saldo, onAdd, addToCart }) => {
               Elimina
             </Button>
           </CardText>
-          <Button color="primary" onClick={onAdd}>
+          <Button color="primary" onClick={() => onAdd(id, counter)}>
             Agregar al Carrito
           </Button>
         </>

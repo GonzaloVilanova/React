@@ -4,7 +4,7 @@ import { NavItem } from "reactstrap";
 import { Link } from "react-router-dom";
 
 //CONTEXT
-import { CartContext } from "../../context/CartContext";
+import { CartContext, CartProvider } from "../../context/CartContext";
 
 //COMPONENTS
 import ItemCount from "../ItemCount/ItemCount";
@@ -27,8 +27,10 @@ const ItemDetail = ({ deudor }) => {
   console.log(addToCart);
   //const [data] = useContext(CartContext);
 
-  const onAdd = () => {
+  const onAdd = (id, cantidad) => {
     setAddtocart(true);
+    console.log("Deuda: " + id);
+    console.log("Cant Marcada: " + cantidad);
   };
 
   return (

@@ -16,17 +16,24 @@ export const CartProvider = ({ children }) => {
       saldo: "$19750",
       cuotasAPagar: 3,
     },
-  ]); // Array vacio carrito sin productos
+  ]); // Array vacío carrito sin productos
 
-  /*   const agregaCarrito = (id) => {
-    const agregaItemCarrito = cart.map((deuda) => {
-      cart.id === deuda.id ? { ...deuda, cuotasAPagar: +1 } : { ...deuda };
+  const addCuota = (deudaId) => {
+    // Agrega 1 cuota en el carrito. Por si quiere SUMAR 1 pago mas
+    const agregaCuota = cart.map((deuda) => {
+      return deudaId === deuda.id
+        ? { ...deuda, cuotasAPagar: deuda.cuotasAPagar + 1 }
+        : { ...deuda };
     });
-    setCart(agregaItemCarrito);
-  }; */
+    setCart(agregaCuota);
+  };
 
   const deleteItem = (deudaId) => {
     const updatedDues = cart.filter((deuda) => deuda.id !== deudaId);
+  };
+
+  const clearCart = () => {
+    const borrarCarrito = setCart([]);
   };
 
   return (

@@ -32,13 +32,14 @@ export const CartProvider = ({ children }) => {
     setCart(agregaCuota);
   };
 
-  const agregaDeuda = (cart) => {
-    const deudaEncontrada = cart.find;
-
+  const agregaDeuda = (deuda, cantidadMarcada) => {
+    const deudaEncontrada = cart.find(
+      (deudaEnCart) => deudaEnCart.id === deuda.id
+    );
     if (deudaEncontrada) {
-      addCuota(deudaEncontrada);
+      deudaEncontrada.cuotasAPagar += cantidadMarcada;
     } else {
-      cart.push({ id: cart.id, CantSelec: cart.counter });
+      cart.push({ ...deuda, cuotasAPagar: cantidadMarcada });
     }
 
     setCart([...cart]);

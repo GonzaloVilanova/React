@@ -29,14 +29,15 @@ const ItemDetail = ({ deudor }) => {
   //const { foo } = useContext(CartContext);
   const { addCuota } = useContext(CartContext);
 
-  const onAdd = (id, cantidad, saldo) => {
+  const onAdd = (id, counter, saldo, empresa, cuenta) => {
     setAddtocart(true);
     console.log("Deuda ID: " + id);
-    console.log("Cant Marcada: " + cantidad);
-
+    console.log("Cant Marcada: " + counter);
+    console.log("Entidad: " + empresa);
     console.log("SaldoCuota: " + saldo);
+    console.log("Cuenta en Mora: " + cuenta);
 
-    addCuota(id, saldo, cantidad);
+    addCuota(id, counter, saldo, empresa, cuenta);
   };
 
   return (
@@ -64,6 +65,8 @@ const ItemDetail = ({ deudor }) => {
                 stock={deudor.cuotas}
                 id={deudor.id}
                 saldo={deudor.saldo}
+                empresa={deudor.empresa}
+                cuenta={deudor.cuenta}
                 onAdd={onAdd}
                 addToCart={addToCart}
               />

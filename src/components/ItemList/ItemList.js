@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+
+//COMPONENTS
 import Item from "../Item/Item";
 
 import "./itemList.css";

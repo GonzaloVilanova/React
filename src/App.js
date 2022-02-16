@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //Componentes
 import Header from "./components/Header/Header";
 import NavBar from "./components/NavBar/NavBar";
+
+// CONTEXT
 import { CartProvider } from "./context/CartContext";
 
 //Views

@@ -4,7 +4,7 @@ import { NavItem } from "reactstrap";
 import { Link } from "react-router-dom";
 
 //CONTEXT
-import { CartContext, CartProvider } from "../../context/CartContext";
+import { CartContext } from "../../context/CartContext";
 
 //COMPONENTS
 import ItemCount from "../ItemCount/ItemCount";
@@ -24,8 +24,8 @@ import {
 const ItemDetail = ({ deudor }) => {
   const [addToCart, setAddtocart] = useState(false); // Array vacio para agregar al carrito
 
-  console.log(addToCart);
-  //const [data] = useContext(CartContext);
+  /*   const [cart, setCart] = useContext(CartContext);
+  console.log(cart); */
 
   const onAdd = (id, cantidad) => {
     setAddtocart(true);

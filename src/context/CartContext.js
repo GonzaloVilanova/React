@@ -2,7 +2,24 @@ import React, { createContext, useState } from "react";
 
 export const CartContext = createContext();
 
+const testingState = [
+  {
+    id: 1,
+    empresa: "Cencosud",
+    saldo: "$8500",
+    cuotasAPagar: 8,
+  },
+  {
+    id: 2,
+    empresa: "Tarjeta Naranja",
+    saldo: "$19750",
+    cuotasAPagar: 3,
+  },
+];
+
 export const CartProvider = ({ children }) => {
+  //const [cart, setCart] = useState(testingState);
+
   const [cart, setCart] = useState([
     {
       id: 1,
@@ -37,6 +54,8 @@ export const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cart }}>{children}</CartContext.Provider>
+    <CartContext.Provider value={{ cart, setCart, addCuota }}>
+      {children}
+    </CartContext.Provider>
   );
 };

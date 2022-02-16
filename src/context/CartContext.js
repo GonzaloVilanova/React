@@ -22,13 +22,13 @@ export const CartProvider = ({ children }) => {
 
   const [cart, setCart] = useState([]); // Array vacío carrito sin productos
 
-  const addCuota = (deudaId, cantidadMarcada) => {
-    // Agrega 1 cuota en el carrito. Por si quiere SUMAR 1 pago mas
+  const addCuota = (id, counter, saldo, empresa, cuenta) => {
     const agregaCuota = cart.map((deuda) => {
-      return deudaId === deuda.id
-        ? { ...deuda, cuotasAPagar: cantidadMarcada }
+      return id === deuda.id
+        ? { ...deuda, cuotasAPagar: counter }
         : { ...deuda };
     });
+
     setCart(agregaCuota);
   };
 

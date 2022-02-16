@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Card, Button, CardText } from "reactstrap";
-import { NavItem } from "reactstrap";
-import { Link } from "react-router-dom";
 
 const ItemCount = ({ stock, initial, id, saldo, onAdd, empresa, cuenta }) => {
   const [counter, setCounter] = useState(1);

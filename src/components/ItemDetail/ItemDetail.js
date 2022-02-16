@@ -24,33 +24,22 @@ import {
 const ItemDetail = ({ deudor }) => {
   const [addToCart, setAddtocart] = useState(false); // Array vacio para agregar al carrito
 
-  const { cart, setCart } = useContext(CartContext);
-
   //const { foo } = useContext(CartContext);
-  const { addCuota } = useContext(CartContext);
+
   const { agregaDeuda } = useContext(CartContext);
 
   const onAdd = (id, counter, saldo, empresa, cuenta) => {
     setAddtocart(true);
-    /*     console.log("Deuda ID: " + id);
-    console.log("Cant Marcada: " + counter);
-    console.log("Entidad: " + empresa);
-    console.log("SaldoCuota: " + saldo);
-    console.log("Cuenta en Mora: " + cuenta); */
 
-    const infoCarrito = [
-      {
-        id: id,
-        saldo: saldo,
-        cantidad: counter,
-        importePorCouta: saldo,
-        CuentaOrig: cuenta,
-        Empresa: empresa,
-      },
-    ];
-    console.log(infoCarrito);
-    addCuota(id, counter, saldo, empresa, cuenta);
-    agregaDeuda(infoCarrito);
+    const deuda = {
+      // armamos un objeto deuda con el id, saldo, etc
+      id: id,
+      saldo: saldo,
+      CuentaOrig: cuenta,
+      Empresa: empresa,
+    };
+
+    agregaDeuda(deuda, counter); // llamamos a la funcion del context agregaDeuda, que recibia dos parametros: un objeto deuda y la cantidad de cuotas
   };
 
   return (
@@ -70,7 +59,7 @@ const ItemDetail = ({ deudor }) => {
           <CardText>Cuotas Pendientes: {deudor.cuotas}</CardText>
 
           <CardText>
-            {addToCart == false ? (
+            {addToCart === false ? (
               <ItemCount
                 data={deudor}
                 stock={deudor.cuotas}

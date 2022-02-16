@@ -6,10 +6,7 @@ import {
   CardImg,
   CardSubtitle,
   CardText,
-  Button,
 } from "reactstrap";
-
-import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer";
 
 import "./item.css";
 

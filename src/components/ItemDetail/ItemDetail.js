@@ -28,16 +28,29 @@ const ItemDetail = ({ deudor }) => {
 
   //const { foo } = useContext(CartContext);
   const { addCuota } = useContext(CartContext);
+  const { agregaDeuda } = useContext(CartContext);
 
   const onAdd = (id, counter, saldo, empresa, cuenta) => {
     setAddtocart(true);
-    console.log("Deuda ID: " + id);
+    /*     console.log("Deuda ID: " + id);
     console.log("Cant Marcada: " + counter);
     console.log("Entidad: " + empresa);
     console.log("SaldoCuota: " + saldo);
-    console.log("Cuenta en Mora: " + cuenta);
+    console.log("Cuenta en Mora: " + cuenta); */
 
+    const infoCarrito = [
+      {
+        id: id,
+        saldo: saldo,
+        cantidad: counter,
+        importePorCouta: saldo,
+        CuentaOrig: cuenta,
+        Empresa: empresa,
+      },
+    ];
+    console.log(infoCarrito);
     addCuota(id, counter, saldo, empresa, cuenta);
+    agregaDeuda(infoCarrito);
   };
 
   return (
@@ -55,9 +68,7 @@ const ItemDetail = ({ deudor }) => {
             DETALLE COMPLETO DE SU DEUDA...AÑO TAL... PRODUCTO TAL...
           </CardText>
           <CardText>Cuotas Pendientes: {deudor.cuotas}</CardText>
-          {/*           <Button color="primary" onClick={() => foo()}>
-            SSSS
-          </Button> */}
+
           <CardText>
             {addToCart == false ? (
               <ItemCount

@@ -22,16 +22,29 @@ export const CartProvider = ({ children }) => {
 
   const [cart, setCart] = useState([]); // Array vacío carrito sin productos
 
-  const addCuota = (id, counter, saldo, empresa, cuenta) => {
+  const addCuota = (deudaId, cantidadMarcada) => {
+    // Agrega 1 cuota en el carrito. Por si quiere SUMAR 1 pago mas
     const agregaCuota = cart.map((deuda) => {
-      return id === deuda.id
-        ? { ...deuda, cuotasAPagar: counter }
+      return deudaId === deuda.id
+        ? { ...deuda, cuotasAPagar: cantidadMarcada }
         : { ...deuda };
     });
-
     setCart(agregaCuota);
   };
 
+  const agregaDeuda = (cart) => {
+    const deudaEncontrada = cart.find;
+
+    if (deudaEncontrada) {
+      addCuota(deudaEncontrada);
+    } else {
+      cart.push({ id: cart.id, CantSelec: cart.counter });
+    }
+
+    setCart([...cart]);
+  };
+
+  console.log(cart);
   const deleteItem = (deudaId) => {
     const updatedDues = cart.filter((deuda) => deuda.id !== deudaId);
   };
@@ -40,12 +53,8 @@ export const CartProvider = ({ children }) => {
     const borrarCarrito = setCart([]);
   };
 
-  const foo = () => {
-    alert("sssssss");
-  };
-
   return (
-    <CartContext.Provider value={{ cart, setCart, addCuota, foo }}>
+    <CartContext.Provider value={{ cart, setCart, addCuota, agregaDeuda }}>
       {children}
     </CartContext.Provider>
   );

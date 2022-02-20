@@ -11,7 +11,7 @@ const ItemCount = ({ stock, initial, id, saldo, onAdd, empresa, cuenta }) => {
   };
 
   const counterDown = () => {
-    if (counter > 0) {
+    if (counter > 1) {
       setCounter(counter - 1); // Quita 1 cuota
     }
   };

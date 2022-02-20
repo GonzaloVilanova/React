@@ -72,6 +72,9 @@ const ItemDetail = ({ deudor }) => {
               />
             ) : (
               <NavItem>
+                <Link to="/Payments">
+                  <Button color="primary">Agrega otras Deudas</Button>
+                </Link>
                 <Link to="/Cart">
                   <Button color="primary">Finalizar Compra</Button>
                 </Link>

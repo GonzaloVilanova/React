@@ -12,8 +12,7 @@ const Carrito = () => {
   const { cart } = useContext(CartContext);
   const { deleteItem } = useContext(CartContext);
   const { clearCart } = useContext(CartContext);
-
-  const acumulaTotal = 0;
+  const { saldoTotal } = useContext(CartContext);
 
   return (
     <div>
@@ -48,7 +47,10 @@ const Carrito = () => {
                 <td>${seleccion.saldo * seleccion.cuotasAPagar}</td>
                 <td>
                   {" "}
-                  <Button color="primary" onClick={() => deleteItem(cart.id)}>
+                  <Button
+                    color="primary"
+                    onClick={() => deleteItem(seleccion.id)}
+                  >
                     X
                   </Button>
                 </td>
@@ -60,7 +62,7 @@ const Carrito = () => {
               <td></td>
 
               <td>TOTAL a PAGAR:</td>
-              <td>${acumulaTotal}</td>
+              <td>${saldoTotal}</td>
               <td>
                 <Button color="primary" onClick={() => clearCart()}>
                   BORRAR TODO

@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Nav, NavItem } from "reactstrap";
 import CardWidget from "../CardWidget/CardWidget";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import logo from "../../assests/img/Logotras.png";
+import { CartContext } from "../../context/CartContext";
 
 const NavBar = () => {
+  const { cart } = useContext(CartContext);
   return (
     <div>
       <Nav className="NavBar">
@@ -27,11 +29,15 @@ const NavBar = () => {
         <NavItem>
           <Link to="/Contact">Contacto</Link>
         </NavItem>
-        <NavItem>
-          <Link to="/Cart">
-            <CardWidget />
-          </Link>
-        </NavItem>
+        {cart.length !== 0 ? (
+          <NavItem>
+            <Link to="/Cart">
+              <CardWidget />
+            </Link>
+          </NavItem>
+        ) : (
+          ""
+        )}
       </Nav>
     </div>
   );

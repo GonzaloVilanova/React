@@ -22,13 +22,15 @@ export const CartProvider = ({ children }) => {
 
   //Borrar Item Individual
   const deleteItem = (deudaId) => {
-    const updatedDues = cart.filter((deudaId) => deudaId !== cart.id);
+    const updateDues = cart.filter((deuda) => deudaId !== deuda.id);
+    setCart(updateDues);
     console.log("Id Item a Borrar: ", deudaId);
+    console.log("Id Item a Borrar2: ", cart.id);
   };
 
   //Borrar TODO el carrito
   const clearCart = () => {
-    const borrarCarrito = setCart([]);
+    setCart([]);
   };
 
   //Total Items Seleccionados

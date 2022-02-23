@@ -23,7 +23,7 @@ const Item = ({ cliente }) => {
             {" "}
             <CardImg
               alt="Card image cap"
-              src={cliente.img2}
+              src={cliente.img}
               top
               width="100%"
             />{" "}

@@ -3,22 +3,30 @@ import ItemList from "../ItemList/ItemList.js";
 import "./ItemListContainer.css";
 import { Spinner } from "reactstrap";
 
+// FIREBASE - FIRESTORE
+import { collection, query, getDocs } from "firebase/firestore";
+import { db } from "../../Firebase/firebaseConfig";
+
 const ItemListContainer = ({ greeting }) => {
   const [clientes, setClientes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  //Firebase useEffect
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_MOCKVILANOVA_BASEURL}`)
-      .then((res) => res.json())
-      .then((json) => setClientes(json))
-
-      .catch((error) => {
-        console.log(error);
+    const getDeudas = async () => {
+      const q = query(collection(db, "deudas"));
+      const docs = [];
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        docs.push({ ...doc.data(), id: doc.id });
       });
-    //.catch(setClientes([])); si falla, para que tome el array hardcodeado desde json
+      console.log(docs);
+      setClientes(docs);
+    };
     setTimeout(() => {
       setIsLoading(false);
     }, 2000);
+    getDeudas();
   }, []);
 
   return (

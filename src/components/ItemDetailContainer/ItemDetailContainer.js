@@ -1,22 +1,40 @@
 import React, { useState, useEffect } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
-import axios from "axios";
 
 // REACT ROUTER DOM
-import { Link } from "react-router-dom";
+
 import { useParams } from "react-router-dom";
+
+// FIREBASE - FIRESTORE
+import {
+  collection,
+  query,
+  getDocs,
+  where,
+  documentId,
+} from "firebase/firestore";
+import { db } from "../../Firebase/firebaseConfig";
 
 const ItemDetailContainer = () => {
   const [deudor, setCliente] = useState([]);
 
-  let id = useParams();
-  let idDeudor = id.id;
+  const { id } = useParams();
 
+  //Firebase useEffect
   useEffect(() => {
-    axios(`${process.env.REACT_APP_MOCKVILANOVA_BASEURL}?id=${idDeudor}`).then(
-      (res) => setCliente(res.data)
-    );
-  }, [idDeudor]);
+    const getDeuda = async () => {
+      const q = query(collection(db, "deudas"), where(documentId(), "==", id));
+      const docs = [];
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        docs.push({ ...doc.data(), id: doc.id });
+      });
+
+      setCliente(docs);
+    };
+
+    getDeuda();
+  }, [id]);
 
   return (
     <div>

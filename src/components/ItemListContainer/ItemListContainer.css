@@ -3,3 +3,13 @@ h4 {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+
+.BarraFilter {
+  display: flex;
+  justify-content: space-around;
+  background-color: lightgray;
+  align-items: center;
+  border: 1px solid black;
+  padding: 1rem;
+  list-style: none;
+}

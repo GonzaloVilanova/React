@@ -18,6 +18,7 @@ import Contact from "./views/Contact/Contact";
 import Payments from "./views/Payments/Payments";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Cart from "./views/Cart/Cart";
+import DueTypes from "./views/DueTypes/DueTypes";
 
 // Main APP
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
             <Route path="/Contact" element={<Contact />} />
             <Route path="/Cart" element={<Cart />} />
             <Route path="/detail/:id" element={<ItemDetailContainer />} />
+            <Route path="/DueTypes/:empresa" element={<DueTypes />} />
           </Routes>
         </div>
       </Router>

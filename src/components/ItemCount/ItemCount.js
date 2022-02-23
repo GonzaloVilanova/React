@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Card, Button, CardText } from "reactstrap";
 
-const ItemCount = ({ stock, initial, id, saldo, onAdd, empresa, cuenta }) => {
+const ItemCount = ({ stock, id, saldo, onAdd, empresa, cuenta }) => {
   const [counter, setCounter] = useState(1);
 
   const counterUp = () => {

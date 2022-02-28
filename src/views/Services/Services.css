@@ -1,0 +1,17 @@
+.ListadoServices {
+  display: flex;
+  justify-content: center;
+  padding: 100px;
+  margin: 10px;
+}
+
+.ServicesImg {
+  align-items: center;
+  height: 400px;
+  width: 300px;
+  padding: 40px;
+}
+
+.ServicesCards {
+  margin: 10px;
+}

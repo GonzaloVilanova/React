@@ -54,7 +54,13 @@ const ItemDetail = ({ deudor }) => {
           </CardSubtitle>
           <CardText>Saldo: ${deudor.saldo}</CardText>
           <CardText>
-            DETALLE COMPLETO DE SU DEUDA...AÑO TAL... PRODUCTO TAL...
+            Este es el detalle de su saldo pendiente con {deudor.empresa}. Tenga
+            presente que cuanto más cuotas abone, menos intereses se aplicarán.
+            En caso de cancelar mas de 3 deudas, consulte por un descuento
+            adicional desde la sección{" "}
+            <Link to="/Contact" className="LinkContacto">
+              CONTACTO.
+            </Link>
           </CardText>
           <CardText>Cuotas Pendientes: {deudor.cuotas}</CardText>
 
@@ -73,10 +79,14 @@ const ItemDetail = ({ deudor }) => {
             ) : (
               <NavItem>
                 <Link to="/Payments">
-                  <Button color="primary">Agrega otras Deudas</Button>
+                  <Button color="primary" className="BtnItem">
+                    Agrega otras Deudas
+                  </Button>
                 </Link>
                 <Link to="/Cart">
-                  <Button color="primary">Finalizar Compra</Button>
+                  <Button color="success" className="BtnItem">
+                    Finalizar Compra
+                  </Button>
                 </Link>
               </NavItem>
             )}

@@ -23,10 +23,10 @@ const ItemCount = ({ stock, id, saldo, onAdd, empresa, cuenta }) => {
 
         <>
           <CardText>
-            <Button color="success" onClick={counterUp}>
+            <Button className="BtnItem" color="success" onClick={counterUp}>
               Agrega
             </Button>
-            <Button color="danger" onClick={counterDown}>
+            <Button className="BtnItem" color="danger" onClick={counterDown}>
               Elimina
             </Button>
           </CardText>

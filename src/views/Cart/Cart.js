@@ -1,18 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { CartContext } from "../../context/CartContext";
 
 //REACTSTRAPP
-import { Table, Button } from "reactstrap";
+import { Table, Button, CardText } from "reactstrap";
 
 // ROUTER DOM
 import { Link } from "react-router-dom";
+
+//FIREBASE
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../Firebase/firebaseConfig";
 
 const Carrito = () => {
   const { cart } = useContext(CartContext);
   const { deleteItem } = useContext(CartContext);
   const { clearCart } = useContext(CartContext);
   const { saldoTotal } = useContext(CartContext);
+
+  const [orderId, setOrderId] = useState("");
+
+  const onSubmitOrder = async (e) => {
+    e.preventDefault();
+    const docRef = await addDoc(collection(db, "pedidos"), { cart });
+
+    setOrderId(docRef.id);
+  };
 
   return (
     <div>
@@ -64,9 +77,28 @@ const Carrito = () => {
               <td>TOTAL a PAGAR:</td>
               <td>${saldoTotal}</td>
               <td>
-                <Button color="primary" onClick={() => clearCart()}>
+                {" "}
+                <Button color="danger" onClick={() => clearCart()}>
                   BORRAR TODO
                 </Button>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                {orderId !== "" ? (
+                  <CardText>
+                    Id de Orden: {orderId}. Pronto te escribimos!!
+                  </CardText>
+                ) : (
+                  <Button color="success" onClick={onSubmitOrder}>
+                    Completar Solicitud
+                  </Button>
+                )}
               </td>
             </tr>
           </tbody>

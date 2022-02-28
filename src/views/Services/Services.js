@@ -7,17 +7,18 @@ import {
   CardText,
   CardTitle,
 } from "reactstrap";
+import "./Services.css";
 
 const Services = () => {
   return (
-    <div>
+    <div className="ListadoServices">
       <CardGroup>
-        <Card>
+        <Card className="ServicesCards">
           <CardImg
+            className="ServicesImg"
             alt="RapiPago Logo"
             src="https://devotoshopping.neexcdn.com.ar/wp-content/uploads/2017/03/Logo-Pago-Facil.png"
             top
-            height="100px"
           />
           <CardBody>
             <CardTitle tag="h5">RapiPago</CardTitle>
@@ -27,12 +28,12 @@ const Services = () => {
             </CardText>
           </CardBody>
         </Card>
-        <Card>
+        <Card className="ServicesCards">
           <CardImg
+            className="ServicesImg"
             alt="Pago Facil Logo"
             src="https://seeklogo.com/images/R/Rapipago-logo-A91BEC6D1D-seeklogo.com.png"
             top
-            height="100px"
           />
           <CardBody>
             <CardTitle tag="h5">Pago Facil</CardTitle>
@@ -43,12 +44,12 @@ const Services = () => {
             </CardText>
           </CardBody>
         </Card>
-        <Card>
+        <Card className="ServicesCards">
           <CardImg
+            className="ServicesImg"
             alt="MercadoPago Logo"
             src="https://www.mgscreativa.com/images/stories/virtuemart/product/logo-mercadopago9.png"
             top
-            height="100px"
           />
           <CardBody>
             <CardTitle tag="h5">MercadoPago</CardTitle>

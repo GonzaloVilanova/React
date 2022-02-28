@@ -5,4 +5,14 @@
   margin-top: 10px;
   justify-content: space-around;
   padding: 2rem;
+  list-style: none;
+}
+
+.BtnItem {
+  margin: 10px;
+  text-align: center;
+}
+
+.LinkContacto {
+  text-decoration: none;
 }

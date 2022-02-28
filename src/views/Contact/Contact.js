@@ -1,77 +1,99 @@
-import React from "react";
-import { Form, Row, Col, FormGroup, Label, Input, Button } from "reactstrap";
+import React, { useState } from "react";
+
+//REACSTRAPP - CSS
+import { Form, FormGroup, Label, Input, Button, CardText } from "reactstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Contact.css";
+
+//FIREBASE
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../Firebase/firebaseConfig";
+
+const initialState = {
+  email: "",
+  nombre: "",
+  select: "",
+  comentarios: "",
+};
 
 const Contact = () => {
+  const [values, setValues] = useState(initialState);
+
+  const [contactId, setContactId] = useState("");
+
+  const onChange = (e) => {
+    const { value, name } = e.target;
+    setValues({ ...values, [name]: value });
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const docRef = await addDoc(collection(db, "contactos"), {
+      values,
+    });
+
+    setContactId(docRef.id);
+    setValues(initialState);
+  };
+
   return (
-    <div>
-      <Form>
-        <Row form>
-          <Col md={6}>
-            <FormGroup>
-              <Label for="exampleEmail">Email</Label>
-              <Input
-                id="exampleEmail"
-                name="email"
-                placeholder="with a placeholder"
-                type="email"
-              />
-            </FormGroup>
-          </Col>
-          <Col md={6}>
-            <FormGroup>
-              <Label for="examplePassword">Password</Label>
-              <Input
-                id="examplePassword"
-                name="password"
-                placeholder="password placeholder"
-                type="password"
-              />
-            </FormGroup>
-          </Col>
-        </Row>
-        <FormGroup>
-          <Label for="exampleAddress">Address</Label>
-          <Input
-            id="exampleAddress"
-            name="address"
-            placeholder="1234 Main St"
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleAddress2">Address 2</Label>
-          <Input
-            id="exampleAddress2"
-            name="address2"
-            placeholder="Apartment, studio, or floor"
-          />
-        </FormGroup>
-        <Row form>
-          <Col md={6}>
-            <FormGroup>
-              <Label for="exampleCity">City</Label>
-              <Input id="exampleCity" name="city" />
-            </FormGroup>
-          </Col>
-          <Col md={4}>
-            <FormGroup>
-              <Label for="exampleState">State</Label>
-              <Input id="exampleState" name="state" />
-            </FormGroup>
-          </Col>
-          <Col md={2}>
-            <FormGroup>
-              <Label for="exampleZip">Zip</Label>
-              <Input id="exampleZip" name="zip" />
-            </FormGroup>
-          </Col>
-        </Row>
-        <FormGroup check>
-          <Input id="exampleCheck" name="check" type="checkbox" />
-          <Label check for="exampleCheck">
-            Acepto TyC
+    <div className="contacto">
+      <Form onSubmit={onSubmit}>
+        <FormGroup className="mb-2 me-sm-2 mb-sm-0">
+          <Label className="me-sm-2" for="Email">
+            Email
           </Label>
+
+          <Input
+            id="Email"
+            name="email"
+            value={values.email}
+            onChange={onChange}
+            placeholder="Ingrese su email"
+            type="email"
+          />
+
+          <Label for="Nombre">Nombre y Apellido</Label>
+          <Input
+            id="Nombre"
+            name="nombre"
+            value={values.nombre}
+            onChange={onChange}
+            placeholder="Nombre Completo"
+          />
+
+          <Label for="select">Seleccione Empresa</Label>
+          <Input
+            id="select"
+            name="select"
+            value={values.select}
+            onChange={onChange}
+            type="select"
+          >
+            <option></option>
+            <option>Tarjeta Naranja</option>
+            <option>Cencosud</option>
+            <option>Vivus</option>
+          </Input>
+
+          <Label for="Comentarios">Comentarios</Label>
+          <Input
+            id="Comentarios"
+            name="comentarios"
+            value={values.comentarios}
+            onChange={onChange}
+            type="textarea"
+          />
         </FormGroup>
-        <Button>Enviar!</Button>
+
+        <Button>Enviar</Button>
+        {contactId !== "" ? (
+          <CardText>
+            Tu ID de contacto es: {contactId}. Pronto te escribimos!!
+          </CardText>
+        ) : (
+          ""
+        )}
       </Form>
     </div>
   );

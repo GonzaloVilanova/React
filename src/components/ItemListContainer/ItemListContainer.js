@@ -29,7 +29,7 @@ const ItemListContainer = ({ greeting }) => {
       querySnapshot.forEach((doc) => {
         docs.push({ ...doc.data(), id: doc.id });
       });
-      console.log(docs);
+
       setClientes(docs);
     };
     setTimeout(() => {

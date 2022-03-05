@@ -25,18 +25,24 @@ const Carrito = () => {
     const docRef = await addDoc(collection(db, "pedidos"), { cart });
 
     setOrderId(docRef.id);
+    clearCart();
   };
 
   return (
     <div>
-      Carrito
-      {cart.length === 0 ? (
+      Completa tus pagos
+      {cart.length === 0 && orderId == "" ? (
         <p>
           No hay Items en el carrito! Realiza tu selección desde{" "}
           <Link to="/Payments">
             <Button color="primary">ACA</Button>
           </Link>
         </p>
+      ) : orderId !== "" ? (
+        <CardText>
+          {" "}
+          <h3>Id de Orden: {orderId}. Pronto te escribimos!!</h3>
+        </CardText>
       ) : (
         <Table>
           <thead>
@@ -90,15 +96,9 @@ const Carrito = () => {
               <td></td>
               <td></td>
               <td>
-                {orderId !== "" ? (
-                  <CardText>
-                    Id de Orden: {orderId}. Pronto te escribimos!!
-                  </CardText>
-                ) : (
-                  <Button color="success" onClick={onSubmitOrder}>
-                    Completar Solicitud
-                  </Button>
-                )}
+                <Button color="success" onClick={onSubmitOrder}>
+                  Completar Solicitud
+                </Button>
               </td>
             </tr>
           </tbody>
